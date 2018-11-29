@@ -7,3 +7,4 @@ wget https://raw.githubusercontent.com/odoo/odoo/11.0/requirements.txt
 pip3 install -r requirements.txt
 sudo apt-get install ./odoo_11.0.20171003_all.deb
 service odoo start
+cat /dev/null > ~/.bash_history && history -c && exit
