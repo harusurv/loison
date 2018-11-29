@@ -1,4 +1,7 @@
 #!/bin/bash
+OUTPUT="$(ls /sys/class/net | grep ens)"
+sed -i -e "s/NET1234/$OUTPUT/g" netplan
+mv netplan /etc/netplan
 sudo add-apt-repository universe && sudo apt update
 sudo apt-get install python python-dev python-all python3-pip python-all-dev libsasl2-dev libldap2-dev libssl-dev libxml2-dev libxslt-dev
 sudo pip3 install python-ldap lxml
@@ -7,7 +10,4 @@ wget https://raw.githubusercontent.com/odoo/odoo/11.0/requirements.txt
 pip3 install -r requirements.txt
 sudo apt-get install ./odoo_11.0.20171003_all.deb
 service odoo start
-OUTPUT="$(ls /sys/class/net | grep ens)"
-sed -i -e "s/NET1234/$OUTPUT/g" netplan
-mv netplan /etc/netplan
 cat /dev/null > ~/.bash_history && history -c && exit
