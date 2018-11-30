@@ -1,7 +1,8 @@
 #!/bin/bash
 OUTPUT="$(ls /sys/class/net | grep ens)"
 sed -i -e "s/NET1234/$OUTPUT/g" netplan
-mv netplan /etc/netplan
+DIRD="$(ls /etc/netplan)"
+mv netplan "/etc/netplan/$DIRD"
 netplan apply
 sudo add-apt-repository universe && sudo apt update
 sudo apt-get install python python-dev python-all python3-pip python-all-dev libsasl2-dev libldap2-dev libssl-dev libxml2-dev libxslt-dev
